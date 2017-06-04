@@ -1,0 +1,11 @@
+/.vs
+
+Crosscutter/bin
+Crosscutter/obj
+Crosscutter.Test/bin
+Crosscutter.Test/obj
+
+/packages
+/TestResults
+*.vssscc
+*.vspscc
