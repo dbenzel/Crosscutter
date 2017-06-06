@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Crosscutter")]
-[assembly: AssemblyDescription(".NET extensions, safety & convenience methods for known types.")]
+[assembly: AssemblyDescription(".NET extensions, safety &amp; convenience methods for known types.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Daryl Benzel")]
 [assembly: AssemblyProduct("Crosscutter")]
