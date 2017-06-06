@@ -23,6 +23,6 @@ using Crosscutter.Extensions;
 
 "12345-6789".MatchesRegex(@"^\d{5}\-\d{4}$");   //  true
 
-"12345-6789".GetSafeSubstring(0, 5);			//	"12345"
-"12345".GetSafeSubstring(0, 5);					//	"1234"
+"12345-6789".GetSafeSubstring(0, 5);	//	"12345"
+"1234".GetSafeSubstring(0, 5);			//	"1234"
 ```
