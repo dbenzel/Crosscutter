@@ -1,5 +1,5 @@
 # Crosscutter - [Available on nuget](https://www.nuget.org/packages/Crosscutter/)
-.NET extensions, safety &amp; convenience methods for known types.
+.NET extensions, safety &amp; convenience methods for known types.  This project is esssentially me "scratching my own itch", and writing a simple library of extension methods that make known .NET types safer and easier to use.  This improves my rate of friction in all projects, and I've always wished to have a globally-available toolkit for anything and everything.  To this end, all .csproj files in this project are published to [nuget](https://nuget.org/packages/Crosscutter) and open-sourced at [github](https://github.com/dbenzel/Crosscutter).  Enjoy!
 
 # Installation
 Using Package Manager Console:
