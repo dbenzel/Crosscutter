@@ -24,5 +24,13 @@ namespace Crosscutter.Extensions
         {
             return source.ReplaceRegex(pattern, "", ignoreCase);
         }
+
+        public static string GetFirstMatch(this string source, string pattern, bool ignoreCase = true)
+        {
+            if (source == null) return string.Empty;
+
+            var options = ignoreCase ? RegexOptions.IgnoreCase : RegexOptions.None;
+            return Regex.Match(source, pattern, options).Value;
+        }
     }
 }

@@ -41,5 +41,14 @@ namespace Crosscutter.Test.Extensions
             "a".RemoveRegex(AlphaLowercase, false).ShouldEqual(string.Empty);
             "A".RemoveRegex(AlphaLowercase, false).ShouldEqual("A");
         }
+
+        [TestMethod]
+        public void get_first_match()
+        {
+            const string letterAFollowedByLetter = @"A\w\b";
+
+            ((string)null).GetFirstMatch(letterAFollowedByLetter).ShouldEqual(string.Empty);
+            "AA AB AC".GetFirstMatch(letterAFollowedByLetter).ShouldEqual("AA");
+        }
     }
 }

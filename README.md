@@ -25,4 +25,6 @@ using Crosscutter.Extensions;
 
 "12345-6789".GetSafeSubstring(0, 5);	//	"12345"
 "1234".GetSafeSubstring(0, 5);			//	"1234"
+
+"AA AB AC".GetFirstMatch(@"A\w\b");		//	"AA"
 ```
