@@ -29,5 +29,10 @@ namespace Crosscutter.Extensions
 
             return source.Substring(index, length.Value);
         }
+
+        public static string CollapseSpaces(this string source)
+        {
+            return source.ReplaceRegex(@"\s{2,}", " ");
+        }
     }
 }

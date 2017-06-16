@@ -1,4 +1,6 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Crosscutter.Extensions
 {
@@ -8,16 +10,14 @@ namespace Crosscutter.Extensions
         {
             if (source == null) return false;
 
-            var options = ignoreCase ? RegexOptions.IgnoreCase : RegexOptions.None;
-            return Regex.IsMatch(source, pattern, options);
+            return Regex.IsMatch(source, pattern, GetOptions(ignoreCase));
         }
 
         public static string ReplaceRegex(this string source, string pattern, string replacement, bool ignoreCase = true)
         {
             if (source == null) return string.Empty;
 
-            var options = ignoreCase ? RegexOptions.IgnoreCase : RegexOptions.None;
-            return Regex.Replace(source, pattern, replacement, options);
+            return Regex.Replace(source, pattern, replacement, GetOptions(ignoreCase));
         }
 
         public static string RemoveRegex(this string source, string pattern, bool ignoreCase = true)
@@ -29,8 +29,16 @@ namespace Crosscutter.Extensions
         {
             if (source == null) return string.Empty;
 
-            var options = ignoreCase ? RegexOptions.IgnoreCase : RegexOptions.None;
-            return Regex.Match(source, pattern, options).Value;
+            return Regex.Match(source, pattern, GetOptions(ignoreCase)).Value;
         }
+
+        public static IEnumerable<Match> GetAllMatches(this string source, string pattern, bool ignoreCase = true)
+        {
+            if (source == null) return new List<Match>();
+
+            return Regex.Matches(source, pattern, GetOptions(ignoreCase)).Cast<Match>();
+        }
+
+        private static RegexOptions GetOptions(bool ignoreCase) => ignoreCase ? RegexOptions.IgnoreCase : RegexOptions.None;
     }
 }

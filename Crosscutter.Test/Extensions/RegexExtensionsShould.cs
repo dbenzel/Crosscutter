@@ -1,6 +1,7 @@
 ﻿using Crosscutter.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Should;
+using System.Linq;
 
 namespace Crosscutter.Test.Extensions
 {
@@ -8,6 +9,7 @@ namespace Crosscutter.Test.Extensions
     public class RegexExtensionsShould
     {
         private const string AlphaLowercase = @"[a-z]";
+        private const string LetterAFollowedByLetter = @"A\w\b";
 
         [TestMethod]
         public void match_regex_patterns()
@@ -45,10 +47,22 @@ namespace Crosscutter.Test.Extensions
         [TestMethod]
         public void get_first_match()
         {
-            const string letterAFollowedByLetter = @"A\w\b";
+            ((string)null).GetFirstMatch(LetterAFollowedByLetter).ShouldEqual(string.Empty);
+            "AA AB AC".GetFirstMatch(LetterAFollowedByLetter).ShouldEqual("AA");
+            "00".GetFirstMatch(LetterAFollowedByLetter).ShouldEqual(string.Empty);
+        }
 
-            ((string)null).GetFirstMatch(letterAFollowedByLetter).ShouldEqual(string.Empty);
-            "AA AB AC".GetFirstMatch(letterAFollowedByLetter).ShouldEqual("AA");
+        [TestMethod]
+        public void get_all_matches()
+        {
+            ((string)null).GetAllMatches(LetterAFollowedByLetter).ShouldBeEmpty();
+
+            var results = "AA AB AC".GetAllMatches(LetterAFollowedByLetter).ToList();
+
+            results.Count.ShouldEqual(3);
+            results[0].Value.ShouldEqual("AA");
+            results[1].Value.ShouldEqual("AB");
+            results[2].Value.ShouldEqual("AC");
         }
     }
 }

@@ -62,5 +62,12 @@ namespace Crosscutter.Test.Extensions
             "a".Matches("a", "b", "c").ShouldBeTrue();
             "A".Matches("a", "b", "c").ShouldBeFalse();
         }
+
+        [TestMethod]
+        public void collapse_spaces()
+        {
+            ((string)null).CollapseSpaces().ShouldEqual(string.Empty);
+            "Just  Read  The  Instructions".CollapseSpaces().ShouldEqual("Just Read The Instructions");
+        }
     }
 }
