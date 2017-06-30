@@ -64,5 +64,16 @@ namespace Crosscutter.Test.Extensions
             results[1].Value.ShouldEqual("AB");
             results[2].Value.ShouldEqual("AC");
         }
+
+        [TestMethod]
+        public void split_on_regex()
+        {
+            ((string)null).SplitOnRegex(LetterAFollowedByLetter).ShouldBeEmpty();
+
+            var result = "a,b".SplitOnRegex(",").ToList();
+            result.Count.ShouldEqual(2);
+            result[0].ShouldEqual("a");
+            result[1].ShouldEqual("b");
+        }
     }
 }
