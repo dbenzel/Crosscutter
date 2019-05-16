@@ -6,6 +6,25 @@ namespace Crosscutter.Extensions
 {
     public static class RegexExtensions
     {
+        /// <summary>
+        /// Returns true if any of the supplied regular expressions match the source string.  Case insensitive.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="pattern"></param>
+        /// <param name="regexPatterns"></param>
+        /// <returns></returns>
+        public static bool MatchesRegex(this string source, params string[] regexPatterns)
+        {
+            return regexPatterns.Any(pattern => source.MatchesRegex(pattern));
+        }
+
+        /// <summary>
+        /// Returns true if the supplied regular expression matches the source string.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="pattern"></param>
+        /// <param name="ignoreCase"></param>
+        /// <returns></returns>
         public static bool MatchesRegex(this string source, string pattern, bool ignoreCase = true)
         {
             if (source == null) return false;

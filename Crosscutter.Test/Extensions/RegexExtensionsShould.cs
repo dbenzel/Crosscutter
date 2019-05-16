@@ -23,6 +23,13 @@ namespace Crosscutter.Test.Extensions
         }
 
         [TestMethod]
+        public void match_any_regex_pattern()
+        {
+            ((string)null).MatchesRegex(@"x", "y").ShouldBeFalse();
+            "Shortfall of Gravitas".MatchesRegex(@"FAIL", @"NOPE", @"gravit\w+$").ShouldBeTrue();
+        }
+
+        [TestMethod]
         public void replace_regex_matches()
         {
             ((string)null).ReplaceRegex(AlphaLowercase, string.Empty).ShouldEqual(string.Empty);

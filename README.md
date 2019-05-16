@@ -15,26 +15,27 @@ using Crosscutter.Extensions;
 
 ### String Extensions
 ```c#
-"".IsPopulated();               //  false
-"".IsNullOrWhitespace();        //  true
-"".IsNullOrEmpty();             //  true
+"".IsPopulated().ShouldBeFalse();
+"".IsNullOrWhitespace().ShouldBeTrue();
+"".IsNullOrEmpty().ShouldBeTrue();
 
-"abc".IsIn("ABC", "DEF");       //  true (case-insensitive)
+"abc".IsIn("ABC", "DEF").ShouldBeTrue(); // case-insensitive
+"abc".Matches("abc", "def").ShouldBeTrue(); // case-sensitive
+"ABC".Matches("abc", "def").ShouldBeFalse(); // case-sensitive
 
-"abc".Matches("abc", "def");    //  true (case-sensitive)
-"ABC".Matches("abc", "def");    //  false (case-sensitive)
+"12345-6789".GetSafeSubstring(0, 5).ShouldEqual("12345");
+"1234".GetSafeSubstring(0, 5).ShouldEqual("1234");
 
-"12345-6789".GetSafeSubstring(0, 5);	//	"12345"
-"1234".GetSafeSubstring(0, 5);			//	"1234"
-
-"Just  Read  The  Instructions".CollapseSpaces();	//	"Just Read The Instructions"
+"Just  Read  The  Instructions".CollapseSpaces().ShouldEqual("Just Read The Instructions");
 ```
 
 ### Regex Extensions
 ```c#
-"12345-6789".MatchesRegex(@"^\d{5}\-\d{4}$");   //  true
+"12345-6789".MatchesRegex(@"^\d{5}\-\d{4}$").ShouldBeTrue();
 
-"AA AB AC".GetFirstMatch(@"A\w\b");		//	"AA"
+"Shortfall of Gravitas".MatchesRegex(@"FAIL", @"NOPE", @"gravit\w+$").ShouldBeTrue();
 
-"AA AB AC".GetAllMatches(@"A\w\b");		// Matches == ["AA", "AB", "AC"]
+"AA AB AC".GetFirstMatch(@"A\w\b").ShouldEqual("AA");
+
+"AA AB AC".GetAllMatches(@"A\w\b"); // [ "AA", "AB", "AC" ]
 ```
