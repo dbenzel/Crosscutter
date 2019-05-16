@@ -34,5 +34,22 @@ namespace Crosscutter.Extensions
         {
             return source.ReplaceRegex(@"\s{2,}", " ");
         }
+
+        public static string ToTitleCase(this string source)
+        {
+            if (source == null)
+                return string.Empty;
+
+            source = source.ToLower();
+
+            var array = source.ToCharArray();
+
+            var matches = source.GetAllMatches(@"\b[a-z]");
+
+            foreach (var match in matches)
+                array[match.Index] = match.Value.ToUpper().ToCharArray().First();
+
+            return new string(array);
+        }
     }
 }

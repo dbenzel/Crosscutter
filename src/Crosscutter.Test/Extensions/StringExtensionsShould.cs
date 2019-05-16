@@ -69,5 +69,13 @@ namespace Crosscutter.Test.Extensions
             ((string)null).CollapseSpaces().ShouldEqual(string.Empty);
             "Just  Read  The  Instructions".CollapseSpaces().ShouldEqual("Just Read The Instructions");
         }
+
+        [TestMethod]
+        public void convert_to_title_case()
+        {
+            ((string)null).ToTitleCase().ShouldEqual(string.Empty);
+            "of course I still love you".ToTitleCase().ShouldEqual("Of Course I Still Love You");
+            "mr. robot".ToTitleCase().ShouldEqual("Mr. Robot");
+        }
     }
 }

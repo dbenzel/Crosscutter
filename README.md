@@ -27,6 +27,7 @@ using Crosscutter.Extensions;
 "1234".GetSafeSubstring(0, 5).ShouldEqual("1234");
 
 "Just  Read  The  Instructions".CollapseSpaces().ShouldEqual("Just Read The Instructions");
+"of course I still love you".ToTitleCase().ShouldEqual("Of Course I Still Love You");
 ```
 
 ### Regex Extensions
