@@ -8,7 +8,7 @@ PM> Install-Package Crosscutter
 ```
 
 # Usage
-Most all of Crosscutter's functionality is found in the Crosscutter.Extensions namespace.
+All of Crosscutter's functionality is found in the Crosscutter.Extensions namespace.
 ```c#
 using Crosscutter.Extensions;
 ```
@@ -39,4 +39,13 @@ using Crosscutter.Extensions;
 "AA AB AC".GetFirstMatch(@"A\w\b").ShouldEqual("AA");
 
 "AA AB AC".GetAllMatches(@"A\w\b"); // [ "AA", "AB", "AC" ]
+```
+
+### Generic Extensions
+```c#
+var list = "Tesla".AsList();
+
+list.ShouldNotBeNull();
+list.Single().ShouldEqual("Tesla");
+
 ```
